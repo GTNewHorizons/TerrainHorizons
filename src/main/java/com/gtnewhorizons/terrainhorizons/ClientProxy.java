@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package com.gtnewhorizons.terrainhorizons;
 
 public class ClientProxy extends CommonProxy {
 

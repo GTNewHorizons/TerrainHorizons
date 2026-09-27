@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package com.gtnewhorizons.terrainhorizons;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
