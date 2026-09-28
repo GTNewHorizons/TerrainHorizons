@@ -2,14 +2,14 @@ package com.gtnewhorizons.terrainhorizons.api.dimension.worldgen;
 
 import java.util.Random;
 
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.math.Smoothstep;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.ModifierHandler;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.TerrainModifierEntry;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
 
 import com.gtnewhorizon.gtnhlib.util.StdLCG;
 import com.gtnewhorizon.gtnhlib.util.data.ImmutableBlockMeta;
 import com.gtnewhorizons.galaxia.registry.dimension.DimensionEnum;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.math.Smoothstep;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.modifier.ModifierHandler;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.modifier.TerrainModifierEntry;
 
 /**
  * Class to deal with actual application of different feature types

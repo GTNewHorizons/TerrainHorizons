@@ -2,6 +2,7 @@ package com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier;
 
 import java.util.Arrays;
 
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.math.Smoothstep;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
 
@@ -44,12 +45,12 @@ public class ModifierHandler {
      * @param chunkZ        z coordinate of the chunk
      * @return Array full of modifier values
      */
-    public double[] assignModifierValues(com.gtnewhorizons.galaxia.registry.dimension.worldgen.modifier.TerrainModifierEntry modifierEntry, int chunkX, int chunkZ) {
+    public double[] assignModifierValues(TerrainModifierEntry modifierEntry, int chunkX, int chunkZ) {
         double[] valueArray = defaultModifier();
         if (modifierEntry == null) {
             return valueArray;
         }
-        if (modifierEntry.modifier() == com.gtnewhorizons.galaxia.registry.dimension.worldgen.modifier.TerrainModifier.WEIRDNESS) {
+        if (modifierEntry.modifier() == TerrainModifier.WEIRDNESS) {
             cacheWeirdness(chunkX, chunkZ);
             cacheWeirdnessMultiplier(modifierEntry.lowerRange(), modifierEntry.upperRange());
         }
