@@ -13,6 +13,7 @@ import lombok.Getter;
 
 /**
  * ENUM for storing all dimensions
+ * TODO: Replace this with a more dynamic dimension class for creating dimension objects
  */
 @Getter
 public enum DimensionEnum {

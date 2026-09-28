@@ -34,9 +34,10 @@ import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import lombok.Getter;
 
 /**
- * ChunkProvider implementation for Galaxia Planets
+ * ChunkProvider implementation for Terrain Horizons (simple version without cubes)
+ * TODO: Decide if this one is even needed
  */
-public class ChunkProviderGalaxiaPlanet implements IChunkProvider, GalaxiaPlanetGenerator {
+public class ChunkProviderTH implements IChunkProvider, THPlanetGenerator {
 
     private static final int CHUNK_WIDTH = 16;
     public static final int HEIGHT_LIMIT = 256;
@@ -65,7 +66,7 @@ public class ChunkProviderGalaxiaPlanet implements IChunkProvider, GalaxiaPlanet
      * @param world     The world to bind the chunk generator to
      * @param dimension Galaxia dimension for agnostic block placement
      */
-    public ChunkProviderGalaxiaPlanet(World world, DimensionEnum dimension) {
+    public ChunkProviderTH(World world, DimensionEnum dimension) {
         this.dimension = dimension;
         this.worldObj = world;
         ModifierHandler modifierHandler = new ModifierHandler(world);

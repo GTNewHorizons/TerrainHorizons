@@ -7,7 +7,7 @@ import java.util.Random;
 
 import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionEnum;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeGenSpace;
-import com.gtnewhorizons.terrainhorizons.api.dimension.provider.WorldChunkManagerSpace;
+import com.gtnewhorizons.terrainhorizons.api.dimension.provider.WorldChunkManagerTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.ModifierHandler;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -35,7 +35,7 @@ public final class HeightOracle {
     private static final double ALLOWED_DIVERGENCE = 0.25;
 
     private final World world;
-    private final WorldChunkManagerSpace wcm;
+    private final WorldChunkManagerTH wcm;
     private final DimensionEnum dimension;
     private final ModifierHandler modifierHandler;
 
@@ -55,7 +55,7 @@ public final class HeightOracle {
 
     public HeightOracle(World world, DimensionEnum dimension, boolean clampHeight, ModifierHandler modifierHandler) {
         this.world = world;
-        this.wcm = (WorldChunkManagerSpace) world.getWorldChunkManager();
+        this.wcm = (WorldChunkManagerTH) world.getWorldChunkManager();
         this.dimension = dimension;
         this.clampHeight = clampHeight;
 

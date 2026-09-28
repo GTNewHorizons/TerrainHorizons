@@ -1,6 +1,6 @@
 package com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.feature;
 
-import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.GalaxiaPlanetGenerator;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.THPlanetGenerator;
 import net.minecraft.world.World;
 
 /// A feature that is generated underground, on planets
@@ -13,6 +13,6 @@ public interface UndergroundFeature {
     /// @param cx The chunk X coordinate
     /// @param cy The ebs/cube Y coordinate (1 unit = 16 blocks)
     /// @param cz The chunk Z coordinate
-    void generateUndergroundFeature(World world, GalaxiaPlanetGenerator generator, int cx, int cy, int cz);
+    void generateUndergroundFeature(World world, THPlanetGenerator generator, int cx, int cy, int cz);
 
 }

@@ -7,8 +7,8 @@ import java.util.function.Supplier;
 
 import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionEnum;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.BiomeMatrixGenerator;
-import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.ChunkProviderGalaxiaPlanet;
-import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.CubicChunkProviderGalaxiaPlanet;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.ChunkProviderTH;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.CubicChunkProviderTH;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChunkCoordinates;
@@ -35,7 +35,7 @@ import cpw.mods.fml.relauncher.SideOnly;
     modid = "cubicchunks",
     iface = "com.cardinalstar.cubicchunks.world.ICubicWorldProvider",
     striprefs = true)
-public class WorldProviderSpace extends WorldProvider implements ICubicWorldProvider {
+public class WorldProviderTH extends WorldProvider implements ICubicWorldProvider {
 
     private static final Map<Integer, Consumer<WorldProviderBuilder>> CONFIGS = new ConcurrentHashMap<>();
 
@@ -79,9 +79,9 @@ public class WorldProviderSpace extends WorldProvider implements ICubicWorldProv
     /**
      * Creates a new provider containing a chunk manager
      */
-    public WorldProviderSpace() {
+    public WorldProviderTH() {
         super();
-        worldChunkMgr = new WorldChunkManagerSpace();
+        worldChunkMgr = new WorldChunkManagerTH();
     }
 
     public static void registerConfigurator(int dimensionId, Consumer<WorldProviderBuilder> configurator) {
@@ -107,7 +107,7 @@ public class WorldProviderSpace extends WorldProvider implements ICubicWorldProv
      */
     @Override
     protected void registerWorldChunkManager() {
-        ((WorldChunkManagerSpace) this.worldChunkMgr).assignSeed(worldObj.getSeed());
+        ((WorldChunkManagerTH) this.worldChunkMgr).assignSeed(worldObj.getSeed());
     }
 
     /**
@@ -118,7 +118,7 @@ public class WorldProviderSpace extends WorldProvider implements ICubicWorldProv
     @Override
     public IChunkProvider createChunkGenerator() {
         if (chunkGenSupplier == null) {
-            return new ChunkProviderGalaxiaPlanet(worldObj, dimension);
+            return new ChunkProviderTH(worldObj, dimension);
         }
         return chunkGenSupplier.get();
     }
@@ -126,7 +126,7 @@ public class WorldProviderSpace extends WorldProvider implements ICubicWorldProv
     @Optional.Method(modid = "cubicchunks")
     @Override
     public @Nullable IWorldGenerator createCubeGenerator() {
-        return new CubicChunkProviderGalaxiaPlanet(worldObj, dimension);
+        return new CubicChunkProviderTH(worldObj, dimension);
     }
 
     @Override
@@ -168,7 +168,7 @@ public class WorldProviderSpace extends WorldProvider implements ICubicWorldProv
      * Transfers biomes from the world chunk manager to the provider
      */
     public void transferBiomes() {
-        ((WorldChunkManagerSpace) worldChunkMgr).provideBiomes(biomes);
+        ((WorldChunkManagerTH) worldChunkMgr).provideBiomes(biomes);
     }
 
     /**

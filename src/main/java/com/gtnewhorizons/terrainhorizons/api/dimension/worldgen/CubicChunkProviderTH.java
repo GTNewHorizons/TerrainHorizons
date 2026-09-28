@@ -53,14 +53,14 @@ import com.gtnewhorizon.gtnhlib.util.data.ImmutableBlockMeta;
 import lombok.Getter;
 
 /**
- * Terrain generator for Galaxia planets with Cubic Chunks support
+ * Terrain generator for Terrain Horizons with Cubic Chunks support
  * <p>
  * Generates a crust layer from 0 to whatever the maximum height is for the planet's terrain
  * <p>
  * Generates an upper mantle layer from -1 to -128 and a lower mantle layer from -129 to -256
  */
 @ParametersAreNonnullByDefault
-public class CubicChunkProviderGalaxiaPlanet implements IWorldGenerator, GalaxiaPlanetGenerator {
+public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator {
 
     private static final int CHUNK_WIDTH = 16;
     private static final int UPPER_MANTLE_CEILING = 0;
@@ -91,7 +91,7 @@ public class CubicChunkProviderGalaxiaPlanet implements IWorldGenerator, Galaxia
 
     public record DeferredWrite(int x, int y, int z, Block block, int meta) {}
 
-    public CubicChunkProviderGalaxiaPlanet(World world, DimensionEnum dimension) {
+    public CubicChunkProviderTH(World world, DimensionEnum dimension) {
         this.dimension = dimension;
         this.worldObj = world;
         this.modifierHandler = new ModifierHandler(world);

@@ -5,15 +5,16 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderServer;
 
-public interface GalaxiaPlanetGenerator {
+// TODO: This one might not be needed for the terrain API once a structural cleanup is done
+public interface THPlanetGenerator {
 
-    static GalaxiaPlanetGenerator of(World world) {
+    static THPlanetGenerator of(World world) {
         if (world == null) return null;
 
         IChunkProvider cp = world.getChunkProvider();
 
         if (cp instanceof ChunkProviderServer cps) {
-            if (cps.currentChunkProvider instanceof GalaxiaPlanetGenerator inner) {
+            if (cps.currentChunkProvider instanceof THPlanetGenerator inner) {
                 return inner;
             }
         }

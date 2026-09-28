@@ -9,7 +9,7 @@ import net.minecraft.world.gen.NoiseGeneratorOctaves;
 /**
  * A specific implementation of the WorldChunkManager to be used on Galaxia planets
  */
-public class WorldChunkManagerSpace extends WorldChunkManager {
+public class WorldChunkManagerTH extends WorldChunkManager {
 
     private BiomeGenBase[][] biomeGeneratorMatrix;
     private NoiseGeneratorOctaves xBiomeNoise;

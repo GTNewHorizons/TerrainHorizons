@@ -15,9 +15,9 @@ import com.gtnewhorizons.galaxia.registry.dimension.DimensionEnum;
  */
 public class WorldProviderBuilder {
 
-    private final WorldProviderSpace provider;
+    private final WorldProviderTH provider;
 
-    private WorldProviderBuilder(WorldProviderSpace provider) {
+    private WorldProviderBuilder(WorldProviderTH provider) {
         this.provider = provider;
     }
 
@@ -27,11 +27,11 @@ public class WorldProviderBuilder {
      * @param provider The world provider to configure
      * @return Builder object
      */
-    public static WorldProviderBuilder configure(WorldProviderSpace provider) {
+    public static WorldProviderBuilder configure(WorldProviderTH provider) {
         return new WorldProviderBuilder(provider);
     }
 
-    public WorldProviderSpace provider() {
+    public WorldProviderTH provider() {
         return provider;
     }
 
