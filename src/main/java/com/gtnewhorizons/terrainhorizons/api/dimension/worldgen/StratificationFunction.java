@@ -1,5 +1,7 @@
 package com.gtnewhorizons.terrainhorizons.api.dimension.worldgen;
 
+import com.gtnewhorizon.gtnhlib.util.data.BlockMeta;
+import com.gtnewhorizon.gtnhlib.util.data.ImmutableBlockMeta;
 import net.minecraft.block.Block;
 
 /// A functional interface that determines which stone block should be placed at a given Y level.

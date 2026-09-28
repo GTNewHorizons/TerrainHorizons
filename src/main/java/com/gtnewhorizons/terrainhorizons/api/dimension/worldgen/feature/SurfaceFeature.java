@@ -1,8 +1,7 @@
 package com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.feature;
 
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.GalaxiaPlanetGenerator;
 import net.minecraft.world.World;
-
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.GalaxiaPlanetGenerator;
 
 /// A feature that is generated on the surface of a planet.
 public interface SurfaceFeature {

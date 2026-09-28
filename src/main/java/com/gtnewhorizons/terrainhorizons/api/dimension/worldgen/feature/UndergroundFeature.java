@@ -1,5 +1,6 @@
 package com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.feature;
 
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.GalaxiaPlanetGenerator;
 import net.minecraft.world.World;
 
 /// A feature that is generated underground, on planets

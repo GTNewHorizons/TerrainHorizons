@@ -1,0 +1,32 @@
+package com.gtnewhorizons.terrainhorizons.api.dimension.worldgen;
+
+import java.util.Collections;
+import java.util.Map;
+
+import com.gtnewhorizon.gtnhlib.util.data.ImmutableBlockMeta;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.TerrainModifierEntry;
+
+/**
+ * Data record holding terrain features
+ */
+public record TerrainFeature(TerrainPreset preset, double height, double width, Map<String, Object> customParams,
+                             ImmutableBlockMeta replacementBlock, TerrainModifierEntry modifierEntry) {
+
+    public TerrainFeature {
+        customParams = Collections.unmodifiableMap(customParams);
+    }
+
+    public Object getCustom(String key) {
+        return customParams.get(key);
+    }
+
+    public <T> T getCustom(String key, Class<T> type) {
+        Object val = customParams.get(key);
+        return type.isInstance(val) ? type.cast(val) : null;
+    }
+
+    @Override
+    public String toString() {
+        return "TerrainFeature{" + preset + ", height=" + height + "}";
+    }
+}

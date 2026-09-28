@@ -1,9 +1,9 @@
 package com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.details;
 
-import java.util.Random;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.ModifierHandler;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.TerrainModifierEntry;
 
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.modifier.ModifierHandler;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.modifier.TerrainModifierEntry;
+import java.util.Random;
 
 /**
  * 3D terrain generation interface with all the necessary methods
