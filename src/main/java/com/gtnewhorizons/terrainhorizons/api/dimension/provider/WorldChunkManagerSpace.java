@@ -1,4 +1,4 @@
-package com.gtnewhorizons.galaxia.registry.dimension.provider;
+package com.gtnewhorizons.terrainhorizons.api.dimension.provider;
 
 import java.util.Random;
 

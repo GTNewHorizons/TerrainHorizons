@@ -1,14 +1,14 @@
-package com.gtnewhorizons.galaxia.registry.dimension.provider;
+package com.gtnewhorizons.terrainhorizons.api.dimension.provider;
 
 import java.util.function.Supplier;
 
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.BiomeMatrixGenerator;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.client.IRenderHandler;
 
 import com.gtnewhorizons.galaxia.registry.dimension.DimensionEnum;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.BiomeMatrixGenerator;
 
 /**
  * A builder class to generate a world provider with configuration

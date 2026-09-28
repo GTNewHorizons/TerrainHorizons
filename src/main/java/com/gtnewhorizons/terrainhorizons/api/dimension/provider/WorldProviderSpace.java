@@ -1,10 +1,13 @@
-package com.gtnewhorizons.galaxia.registry.dimension.provider;
+package com.gtnewhorizons.terrainhorizons.api.dimension.provider;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.BiomeMatrixGenerator;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.ChunkProviderGalaxiaPlanet;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.CubicChunkProviderGalaxiaPlanet;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChunkCoordinates;
@@ -20,9 +23,6 @@ import org.jetbrains.annotations.Nullable;
 import com.cardinalstar.cubicchunks.api.worldgen.IWorldGenerator;
 import com.cardinalstar.cubicchunks.world.ICubicWorldProvider;
 import com.gtnewhorizons.galaxia.registry.dimension.DimensionEnum;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.BiomeMatrixGenerator;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.ChunkProviderGalaxiaPlanet;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.CubicChunkProviderGalaxiaPlanet;
 
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
