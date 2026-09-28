@@ -6,6 +6,22 @@ import java.util.Random;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionEnum;
+import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeBlockPalette;
+import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeGenSpace;
+import com.gtnewhorizons.terrainhorizons.api.dimension.biome.DefaultBlockPalette;
+import com.gtnewhorizons.terrainhorizons.api.dimension.cave.CaveShape;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.details.Terrain3D;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.feature.SurfaceFeature;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.feature.UndergroundFeature;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.mantle.MantleCache;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.mantle.MantleCacheData;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.mantle.MantleRules;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.ModifierHandler;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.noise.NoiseSampler;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.noise.NormalizedSampler;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.noise.OctavesSampler;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.noise.ScaledSampler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
@@ -33,22 +49,6 @@ import com.gtnewhorizon.gtnhlib.hash.Fnv1a64;
 import com.gtnewhorizon.gtnhlib.util.StdLCG;
 import com.gtnewhorizon.gtnhlib.util.data.BlockMeta;
 import com.gtnewhorizon.gtnhlib.util.data.ImmutableBlockMeta;
-import com.gtnewhorizons.galaxia.registry.dimension.DimensionEnum;
-import com.gtnewhorizons.galaxia.registry.dimension.biome.BiomeBlockPalette;
-import com.gtnewhorizons.galaxia.registry.dimension.biome.BiomeGenSpace;
-import com.gtnewhorizons.galaxia.registry.dimension.biome.DefaultBlockPalette;
-import com.gtnewhorizons.galaxia.registry.dimension.cave.CaveShape;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.details.Terrain3D;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.feature.SurfaceFeature;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.feature.UndergroundFeature;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.mantle.MantleCache;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.mantle.MantleCacheData;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.mantle.MantleRules;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.modifier.ModifierHandler;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.noise.NoiseSampler;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.noise.NormalizedSampler;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.noise.OctavesSampler;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.noise.ScaledSampler;
 
 import lombok.Getter;
 

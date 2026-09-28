@@ -1,14 +1,14 @@
-package com.gtnewhorizons.galaxia.registry.dimension;
+package com.gtnewhorizons.terrainhorizons.api.dimension;
 
 import com.gtnewhorizon.gtnhlib.util.data.BlockMeta;
 import com.gtnewhorizons.galaxia.registry.block.PlanetBlocks;
-import com.gtnewhorizons.galaxia.registry.dimension.cave.CaveShape;
 import com.gtnewhorizons.galaxia.registry.dimension.cave.CaveShapeCracks;
 import com.gtnewhorizons.galaxia.registry.dimension.cave.CaveShapeTubes;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.TerrainConfiguration;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.TerrainPreset;
-import com.gtnewhorizons.galaxia.registry.dimension.worldgen.mantle.MantleRules;
 
+import com.gtnewhorizons.terrainhorizons.api.dimension.cave.CaveShape;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.TerrainConfiguration;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.TerrainPreset;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.mantle.MantleRules;
 import lombok.Getter;
 
 /**

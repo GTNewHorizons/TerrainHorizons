@@ -2,6 +2,7 @@ package com.gtnewhorizons.terrainhorizons.api.dimension.worldgen;
 
 import java.util.Random;
 
+import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionEnum;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.math.Smoothstep;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.ModifierHandler;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.TerrainModifierEntry;
@@ -9,7 +10,6 @@ import net.minecraft.world.gen.NoiseGeneratorOctaves;
 
 import com.gtnewhorizon.gtnhlib.util.StdLCG;
 import com.gtnewhorizon.gtnhlib.util.data.ImmutableBlockMeta;
-import com.gtnewhorizons.galaxia.registry.dimension.DimensionEnum;
 
 /**
  * Class to deal with actual application of different feature types
@@ -30,8 +30,8 @@ public final class TerrainFeatureApplier {
      * @param noise            World-level noise generator seeded from the world seed
      */
     public static void applyToHeightmap(TerrainFeature feature, double[] heightMap,
-        ImmutableBlockMeta[] surfaceReplacementMap, int chunkX, int chunkZ, Random rand, double[] terrainRelevance,
-        DimensionEnum dimension, NoiseGeneratorOctaves noise, ModifierHandler modifierHandler) {
+                                        ImmutableBlockMeta[] surfaceReplacementMap, int chunkX, int chunkZ, Random rand, double[] terrainRelevance,
+                                        DimensionEnum dimension, NoiseGeneratorOctaves noise, ModifierHandler modifierHandler) {
         TerrainPreset preset = feature.preset();
         double height = feature.height();
         double width = feature.width();

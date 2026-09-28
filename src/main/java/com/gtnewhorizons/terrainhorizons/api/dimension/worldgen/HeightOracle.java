@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionEnum;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeGenSpace;
+import com.gtnewhorizons.terrainhorizons.api.dimension.provider.WorldChunkManagerSpace;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.ModifierHandler;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -16,7 +18,6 @@ import com.gtnewhorizon.gtnhlib.hash.Fnv1a64;
 import com.gtnewhorizon.gtnhlib.util.StdLCG;
 import com.gtnewhorizon.gtnhlib.util.data.BlockMeta;
 import com.gtnewhorizon.gtnhlib.util.data.ImmutableBlockMeta;
-import com.gtnewhorizons.galaxia.registry.dimension.provider.WorldChunkManagerSpace;
 
 import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
@@ -35,7 +36,7 @@ public final class HeightOracle {
 
     private final World world;
     private final WorldChunkManagerSpace wcm;
-    private final com.gtnewhorizons.galaxia.registry.dimension.DimensionEnum dimension;
+    private final DimensionEnum dimension;
     private final ModifierHandler modifierHandler;
 
     private final boolean clampHeight;
@@ -52,7 +53,7 @@ public final class HeightOracle {
     private final StdLCG rand = new StdLCG();
     private final NoiseGeneratorOctaves terrainNoise;
 
-    public HeightOracle(World world, com.gtnewhorizons.galaxia.registry.dimension.DimensionEnum dimension, boolean clampHeight, ModifierHandler modifierHandler) {
+    public HeightOracle(World world, DimensionEnum dimension, boolean clampHeight, ModifierHandler modifierHandler) {
         this.world = world;
         this.wcm = (WorldChunkManagerSpace) world.getWorldChunkManager();
         this.dimension = dimension;

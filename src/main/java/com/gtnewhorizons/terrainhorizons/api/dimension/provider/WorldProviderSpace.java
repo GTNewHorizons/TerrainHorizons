@@ -5,6 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionEnum;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.BiomeMatrixGenerator;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.ChunkProviderGalaxiaPlanet;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.CubicChunkProviderGalaxiaPlanet;
@@ -22,7 +23,6 @@ import org.jetbrains.annotations.Nullable;
 
 import com.cardinalstar.cubicchunks.api.worldgen.IWorldGenerator;
 import com.cardinalstar.cubicchunks.world.ICubicWorldProvider;
-import com.gtnewhorizons.galaxia.registry.dimension.DimensionEnum;
 
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
