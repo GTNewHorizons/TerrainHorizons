@@ -34,8 +34,12 @@
  * For more details, see https://docs.gradle.org/8.0.1/userguide/java_library_plugin.html#sec:java_library_configurations_graph
  */
 dependencies {
+    api("com.github.GTNewHorizons:GTNHLib:0.11.33:dev")
+
     runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.8.117-GTNH:dev")
 
+    compileOnly('org.projectlombok:lombok:1.18.46')
+    annotationProcessor('org.projectlombok:lombok:1.18.46')
     implementation("com.cardinalstar.cubicchunks:CubicChunks1710:v0.1.23-alpha-pre:dev")
     testRuntimeOnly("com.cardinalstar.cubicchunks:CubicChunks1710:v0.1.23-alpha-pre:dev")
 }
