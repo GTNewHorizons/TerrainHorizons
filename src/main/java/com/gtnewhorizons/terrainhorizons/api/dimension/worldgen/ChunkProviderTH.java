@@ -35,7 +35,8 @@ import lombok.Getter;
 
 /**
  * ChunkProvider implementation for Terrain Horizons (simple version without cubes)
- * TODO: Decide if this one is even needed
+ * <p>
+ * Can be used when Cubic Chunks is absent
  */
 public class ChunkProviderTH implements IChunkProvider, THPlanetGenerator {
 
