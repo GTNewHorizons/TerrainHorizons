@@ -39,6 +39,8 @@ dependencies {
     runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.8.117-GTNH:dev")
 
     devOnlyNonPublishable("com.falsepattern:chunkapi-mc1.7.10:0.8.2:dev")
+    devOnlyNonPublishable("com.falsepattern:endlessids-mc1.7.10:1.7.4:dev")
+
 
     compileOnly('org.projectlombok:lombok:1.18.46')
     annotationProcessor('org.projectlombok:lombok:1.18.46')
