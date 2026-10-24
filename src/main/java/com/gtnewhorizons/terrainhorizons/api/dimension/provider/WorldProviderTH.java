@@ -19,14 +19,14 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.client.IRenderHandler;
 
-import org.jetbrains.annotations.Nullable;
-
 import com.cardinalstar.cubicchunks.api.worldgen.IWorldGenerator;
 import com.cardinalstar.cubicchunks.world.ICubicWorldProvider;
 
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 /**
  * An abstract version of the WorldProvider to be used on Galaxia Planets

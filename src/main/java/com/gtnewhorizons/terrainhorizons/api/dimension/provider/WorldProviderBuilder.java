@@ -2,13 +2,12 @@ package com.gtnewhorizons.terrainhorizons.api.dimension.provider;
 
 import java.util.function.Supplier;
 
+import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.BiomeMatrixGenerator;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.client.IRenderHandler;
-
-import com.gtnewhorizons.galaxia.registry.dimension.DimensionEnum;
 
 /**
  * A builder class to generate a world provider with configuration
@@ -138,8 +137,8 @@ public class WorldProviderBuilder {
      * @param planet The ENUM of the planet
      * @return Configured builder
      */
-    public WorldProviderBuilder name(DimensionEnum planet) {
-        provider.name = planet.getName();
+    public WorldProviderBuilder name(DimensionTH planet) {
+        provider.name = planet.name();
         provider.dimension = planet;
         return this;
     }
