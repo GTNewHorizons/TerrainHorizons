@@ -480,31 +480,5 @@ public class ChunkProviderTH implements IChunkProvider, THPlanetGenerator {
      * Writes a debug message for testing purposes only
      */
     public void writeDebug() {
-        // TODO: Update debug to biome-specific terrain generation
-        // System.out.println(
-        // "Terrain features TOTAL: " + this.terrain.getAllFeatures()
-        // .size());
-        // System.out.println(
-        // "MACRO features: " + this.terrain.getMacroFeatures()
-        // .size());
-        // System.out.println(
-        // "MESO features: " + this.terrain.getMesoFeatures()
-        // .size());
-        // System.out.println(
-        // "MICRO features: " + this.terrain.getMicroFeatures()
-        // .size());
-        //
-        // if (!this.terrain.getAllFeatures()
-        // .isEmpty()) {
-        // System.out.println(
-        // "First feature: " + this.terrain.getAllFeatures()
-        // .get(0));
-        // }
-        // if (!this.terrain.getMacroFeatures()
-        // .isEmpty()) {
-        // System.out.println(
-        // "First MACRO: " + this.terrain.getMacroFeatures()
-        // .get(0));
-        // }
     }
 }
