@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionEnum;
+import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeGenSpace;
 import com.gtnewhorizons.terrainhorizons.api.dimension.provider.WorldChunkManagerTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.ModifierHandler;
@@ -36,7 +36,7 @@ public final class HeightOracle {
 
     private final World world;
     private final WorldChunkManagerTH wcm;
-    private final DimensionEnum dimension;
+    private final DimensionTH dimension;
     private final ModifierHandler modifierHandler;
 
     private final boolean clampHeight;
@@ -53,7 +53,7 @@ public final class HeightOracle {
     private final StdLCG rand = new StdLCG();
     private final NoiseGeneratorOctaves terrainNoise;
 
-    public HeightOracle(World world, DimensionEnum dimension, boolean clampHeight, ModifierHandler modifierHandler) {
+    public HeightOracle(World world, DimensionTH dimension, boolean clampHeight, ModifierHandler modifierHandler) {
         this.world = world;
         this.wcm = (WorldChunkManagerTH) world.getWorldChunkManager();
         this.dimension = dimension;

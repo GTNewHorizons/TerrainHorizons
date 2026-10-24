@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionEnum;
+import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.BiomeMatrixGenerator;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.ChunkProviderTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.CubicChunkProviderTH;
@@ -41,7 +41,7 @@ public class WorldProviderTH extends WorldProvider implements ICubicWorldProvide
 
     private BiomeGenBase[][] biomes;
 
-    protected DimensionEnum dimension;
+    protected DimensionTH dimension;
     protected boolean hasSky = true;
     protected float cloudHeight = Integer.MIN_VALUE;
     protected boolean isSurface = true;

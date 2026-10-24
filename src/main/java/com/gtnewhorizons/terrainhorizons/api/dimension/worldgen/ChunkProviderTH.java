@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionEnum;
+import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeBlockPalette;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeGenSpace;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.DefaultBlockPalette;
@@ -48,7 +48,7 @@ public class ChunkProviderTH implements IChunkProvider, THPlanetGenerator {
     private static final ImmutableBlockMeta AIR = new BlockMeta(Blocks.air);
 
     @Getter
-    private final DimensionEnum dimension;
+    private final DimensionTH dimension;
     private final World worldObj;
     private final Random rand;
     private final NoiseSampler crackNoise1, crackNoise2;
@@ -67,7 +67,7 @@ public class ChunkProviderTH implements IChunkProvider, THPlanetGenerator {
      * @param world     The world to bind the chunk generator to
      * @param dimension Galaxia dimension for agnostic block placement
      */
-    public ChunkProviderTH(World world, DimensionEnum dimension) {
+    public ChunkProviderTH(World world, DimensionTH dimension) {
         this.dimension = dimension;
         this.worldObj = world;
         ModifierHandler modifierHandler = new ModifierHandler(world);

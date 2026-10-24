@@ -6,7 +6,7 @@ import java.util.Random;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionEnum;
+import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeBlockPalette;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeGenSpace;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.DefaultBlockPalette;
@@ -79,7 +79,7 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
     private static final ImmutableBlockMeta AIR = new BlockMeta(Blocks.air);
 
     @Getter
-    private final DimensionEnum dimension;
+    private final DimensionTH dimension;
     private final World worldObj;
     private final Random rand;
     private final NoiseSampler crackNoise1, crackNoise2;
@@ -91,7 +91,7 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
 
     public record DeferredWrite(int x, int y, int z, Block block, int meta) {}
 
-    public CubicChunkProviderTH(World world, DimensionEnum dimension) {
+    public CubicChunkProviderTH(World world, DimensionTH dimension) {
         this.dimension = dimension;
         this.worldObj = world;
         this.modifierHandler = new ModifierHandler(world);
@@ -181,9 +181,9 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
         // Fetch mantle rules
         MantleRules mantleRules;
         if (upperMantle) {
-            mantleRules = dimension.getUpperMantleRules();
+            mantleRules = dimension.upperMantleRules();
         } else {
-            mantleRules = dimension.getLowerMantleRules();
+            mantleRules = dimension.lowerMantleRules();
         }
         if (mantleRules == null) {
             return;
@@ -208,10 +208,10 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
         CaveShape ceilingCaves;
         CaveShape floorCaves;
         if (upperMantle) {
-            ceilingCaves = dimension.getUpperIntermediaryCaves();
-            floorCaves = dimension.getLowerIntermediaryCaves();
+            ceilingCaves = dimension.upperIntermediaryCaves();
+            floorCaves = dimension.lowerIntermediaryCaves();
         } else {
-            ceilingCaves = dimension.getLowerIntermediaryCaves();
+            ceilingCaves = dimension.lowerIntermediaryCaves();
             floorCaves = null;
         }
 
@@ -290,7 +290,7 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
     private void generateCrust(int cubeX, int cubeY, int cubeZ, HeightOracle.ChunkData data, ExtendedBlockStorage ebs) {
         CaveShape crustCaves = null;
         Terrain3D terrain3d = null;
-        CaveShape intermediateCaves = dimension.getUpperIntermediaryCaves();
+        CaveShape intermediateCaves = dimension.upperIntermediaryCaves();
         if (intermediateCaves != null) {
             if (!intermediateCaves.preparedCaveShape()) {
                 intermediateCaves.prepareCaveShape(rand);

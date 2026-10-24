@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionEnum;
+import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.TerrainConfiguration;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.TerrainFeature;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.TerrainFeatureApplier;
@@ -28,7 +28,7 @@ public class MantleCache {
 
     private final World world;
     private final Random random;
-    private final DimensionEnum dimension;
+    private final DimensionTH dimension;
     private final NoiseGeneratorOctaves terrainNoise;
     private final ModifierHandler modifierHandler;
 
@@ -42,7 +42,7 @@ public class MantleCache {
      * @param dimension       Dimension the cache is used for
      * @param modifierHandler Handler for terrain modifiers
      */
-    public MantleCache(World world, Random random, DimensionEnum dimension, ModifierHandler modifierHandler) {
+    public MantleCache(World world, Random random, DimensionTH dimension, ModifierHandler modifierHandler) {
         this.world = world;
         this.random = random;
         this.dimension = dimension;
@@ -109,8 +109,8 @@ public class MantleCache {
          * @param modifierHandler Handler for terrain modifiers
          */
         public CacheEntry(int columnX, int columnZ, TerrainConfiguration ceiling, TerrainConfiguration floor,
-            World world, Random random, DimensionEnum dimension, NoiseGeneratorOctaves terrainNoise,
-            ModifierHandler modifierHandler) {
+                          World world, Random random, DimensionTH dimension, NoiseGeneratorOctaves terrainNoise,
+                          ModifierHandler modifierHandler) {
             this.columnX = columnX;
             this.columnZ = columnZ;
             this.world = world;

@@ -2,7 +2,7 @@ package com.gtnewhorizons.terrainhorizons.api.dimension.worldgen;
 
 import java.util.Random;
 
-import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionEnum;
+import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.math.Smoothstep;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.ModifierHandler;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.TerrainModifierEntry;
@@ -31,7 +31,7 @@ public final class TerrainFeatureApplier {
      */
     public static void applyToHeightmap(TerrainFeature feature, double[] heightMap,
                                         ImmutableBlockMeta[] surfaceReplacementMap, int chunkX, int chunkZ, Random rand, double[] terrainRelevance,
-                                        DimensionEnum dimension, NoiseGeneratorOctaves noise, ModifierHandler modifierHandler) {
+                                        DimensionTH dimension, NoiseGeneratorOctaves noise, ModifierHandler modifierHandler) {
         TerrainPreset preset = feature.preset();
         double height = feature.height();
         double width = feature.width();
