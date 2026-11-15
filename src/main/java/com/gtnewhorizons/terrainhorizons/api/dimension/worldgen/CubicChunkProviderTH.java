@@ -44,7 +44,6 @@ import com.cardinalstar.cubicchunks.server.chunkio.ICubeLoader;
 import com.cardinalstar.cubicchunks.util.HashMap3D;
 import com.cardinalstar.cubicchunks.world.api.ICubeProviderServer.Requirement;
 import com.cardinalstar.cubicchunks.world.cube.Cube;
-import com.gtnewhorizon.gtnhlib.hash.Fnv1a64;
 import com.gtnewhorizon.gtnhlib.util.StdLCG;
 import com.gtnewhorizon.gtnhlib.util.data.BlockMeta;
 import com.gtnewhorizon.gtnhlib.util.data.ImmutableBlockMeta;
@@ -113,7 +112,7 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
 
     @Override
     public void queueDeferredWrite(int x, int y, int z, Block block, int meta) {
-        deferredWrites.computeIfAbsent(x >> 4, y >> 4, z >> 4, ($x, $y, $z) -> new ArrayList<>())
+        deferredWrites.computeIfAbsent(x >> 4, y >> 4, z >> 4, (_, _, _) -> new ArrayList<>())
             .add(new DeferredWrite(x & 0xF, y & 0xF, z & 0xF, block, meta));
     }
 
@@ -358,7 +357,7 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
                     ImmutableBlockMeta block;
 
                     // Handle 3D terrain block checks
-                    if (y >= terrainHeight && y - terrainHeight < terrain3dHeight) {
+                    if (terrain3d != null && y >= terrainHeight && y - terrainHeight < terrain3dHeight) {
                         if (!terrain3d.isSolid(localX, y - terrainHeight, localZ)) {
                             isTerrain = false;
                         }
@@ -594,18 +593,6 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
             loader.getCube(pos.x(), pos.y(), pos.z(), Requirement.GENERATE)
                 .markPopulated(Cube.POP_ALL);
         }
-    }
-
-    private Random withSeed(int chunkX, int chunkZ, int index, int nonce) {
-        long seed = Fnv1a64.initialState();
-        seed = Fnv1a64.hashStep(seed, worldObj.getSeed());
-        seed = Fnv1a64.hashStep(seed, chunkX);
-        seed = Fnv1a64.hashStep(seed, chunkZ);
-        seed = Fnv1a64.hashStep(seed, index);
-        seed = Fnv1a64.hashStep(seed, nonce);
-
-        rand.setSeed(seed);
-        return rand;
     }
 
     @Override
