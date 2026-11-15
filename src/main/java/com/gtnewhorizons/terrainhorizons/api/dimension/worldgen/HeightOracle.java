@@ -159,7 +159,6 @@ public final class HeightOracle {
 
     public void computeChunkData(int cx, int cz, double[] outHeightMap, ImmutableBlockMeta[] outSurfaceBlocks,
         BiomeGenBase[] outBiomes) {
-        Arrays.fill(outHeightMap, 64.0);
         Arrays.fill(outSurfaceBlocks, null);
         Arrays.fill(outBiomes, null);
 

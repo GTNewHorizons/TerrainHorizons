@@ -62,14 +62,16 @@ import lombok.Getter;
 public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator {
 
     private static final int CHUNK_WIDTH = 16;
-    private static final int UPPER_MANTLE_CEILING = 0;
-    private static final int UPPER_MANTLE_FLOOR = -128;
-    private static final int LOWER_MANTLE_CEILING = -128;
-    private static final int LOWER_MANTLE_FLOOR = -256;
-    private static final int UPPER_INTERMEDIARY_CAVES_TOP = 64;
-    private static final int UPPER_INTERMEDIARY_CAVES_BOTTOM = -64;
-    private static final int LOWER_INTERMEDIARY_CAVES_TOP = -64;
-    private static final int LOWER_INTERMEDIARY_CAVES_BOTTOM = -192;
+    private static final int WORLD_HEIGHT_LIMIT = 1024;
+    private static final int WORLD_DEPTH_LIMIT = -1024;
+    private static final int UPPER_MANTLE_CEILING = -64;
+    private static final int UPPER_MANTLE_FLOOR = -192;
+    private static final int LOWER_MANTLE_CEILING = -192;
+    private static final int LOWER_MANTLE_FLOOR = -320;
+    private static final int UPPER_INTERMEDIARY_CAVES_TOP = 0;
+    private static final int UPPER_INTERMEDIARY_CAVES_BOTTOM = -128;
+    private static final int LOWER_INTERMEDIARY_CAVES_TOP = -128;
+    private static final int LOWER_INTERMEDIARY_CAVES_BOTTOM = -256;
     private final MantleCache upperMantleCache;
     private final MantleCache lowerMantleCache;
 
@@ -91,6 +93,7 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
     public record DeferredWrite(int x, int y, int z, Block block, int meta) {}
 
     public CubicChunkProviderTH(World world, DimensionTH dimension) {
+        ((ICubicWorldInternal) world).setHeightBounds(WORLD_DEPTH_LIMIT, WORLD_HEIGHT_LIMIT);
         this.dimension = dimension;
         this.worldObj = world;
         this.modifierHandler = new ModifierHandler(world);
@@ -141,9 +144,9 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
         var data = heightOracle.getOrCompute(cubeX, cubeZ);
         ExtendedBlockStorage ebs = cube.getOrCreateStorage();
 
-        if (cubeY >= 0) {
+        if (cubeY >= UPPER_MANTLE_CEILING >> 4) {
             generateCrust(cubeX, cubeY, cubeZ, data, ebs);
-        } else if (cubeY >= -8) {
+        } else if (cubeY >= UPPER_MANTLE_FLOOR >> 4) {
             generateMantle(cubeX, cubeY, cubeZ, ebs, UPPER_MANTLE_CEILING, UPPER_MANTLE_FLOOR, true);
         } else {
             generateMantle(cubeX, cubeY, cubeZ, ebs, LOWER_MANTLE_CEILING, LOWER_MANTLE_FLOOR, false);
@@ -319,7 +322,7 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
                     }
                 }
 
-                int terrainHeight = Math.max(1, (int) data.heightmap[localX + (localZ << 4)]);
+                int terrainHeight = Math.max(UPPER_MANTLE_CEILING, (int) data.heightmap[localX + (localZ << 4)]);
 
                 // Prepare cave generation if present
                 if (crustCaves != null) {

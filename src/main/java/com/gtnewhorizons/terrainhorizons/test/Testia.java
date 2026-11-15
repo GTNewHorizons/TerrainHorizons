@@ -24,9 +24,6 @@ public class Testia {
         BiomeGenBase border = createLavaOceanBiome(
             "Testia Lava Ocean Edge",
             TerrainConfiguration.builder()
-                .feature(TerrainPreset.BASE_HEIGHT)
-                .height(16)
-                .endFeature()
                 .feature(TerrainPreset.MOUNTAIN_RANGES)
                 .width(4)
                 .height(32)
@@ -36,12 +33,12 @@ public class Testia {
             "Testia Volcanoes",
             TerrainConfiguration.builder()
                 .feature(TerrainPreset.BASE_HEIGHT)
-                .height(8)
+                .height(-32)
                 .endFeature()
                 .feature(TerrainPreset.SHIELD_VOLCANOES)
                 .replacementBlock(Blocks.lava)
                 .width(2)
-                .height(32)
+                .height(48)
                 .modifier(
                     TerrainModifier.WEIRDNESS,
                     TerrainModifier.WEIRDNESS.minimum,
@@ -61,7 +58,7 @@ public class Testia {
             "Testia Highlands",
             TerrainConfiguration.builder()
                 .feature(TerrainPreset.BASE_HEIGHT)
-                .height(32)
+                .height(8)
                 .endFeature()
                 .feature(TerrainPreset.MOUNTAIN_RANGES)
                 .width(3)
@@ -88,16 +85,52 @@ public class Testia {
                     TerrainModifier.WEIRDNESS.maximum)
                 .endFeature()
                 .build());
+        BiomeGenBase lowlands = createLandBiome(
+            "Testia Lowlands",
+            TerrainConfiguration.builder()
+                .feature(TerrainPreset.BASE_HEIGHT)
+                .height(-40)
+                .modifier(
+                    TerrainModifier.WEIRDNESS,
+                    TerrainModifier.WEIRDNESS.lowerExtreme,
+                    TerrainModifier.WEIRDNESS.upperExtreme)
+                .endFeature()
+                .feature(TerrainPreset.MOUNTAIN_RANGES)
+                .width(3)
+                .height(40)
+                .modifier(
+                    TerrainModifier.WEIRDNESS,
+                    TerrainModifier.WEIRDNESS.lowerExtreme,
+                    TerrainModifier.WEIRDNESS.upperExtreme)
+                .endFeature()
+                .feature(TerrainPreset.MOUNTAIN_RANGES)
+                .width(32)
+                .height(32)
+                .modifier(
+                    TerrainModifier.WEIRDNESS,
+                    TerrainModifier.WEIRDNESS.minimum,
+                    TerrainModifier.WEIRDNESS.middle)
+                .endFeature()
+                .feature(TerrainPreset.CANYONS)
+                .width(4)
+                .height(16)
+                .modifier(
+                    TerrainModifier.WEIRDNESS,
+                    TerrainModifier.WEIRDNESS.middle,
+                    TerrainModifier.WEIRDNESS.maximum)
+                .endFeature()
+                .build());
         builder.sky(true)
-            .fog(0, 0, 0)
-            .skyColor(0, 0, 0.001f)
-            .avgGround(80)
+            .fog(0.4, 0.4, 0.4)
+            .skyColor(0.3, 0.5, 0.5f)
+            .avgGround(0)
             // Biome matrix
             .biomeMatrix(
-                new BiomeMatrixGenerator(new String[] { "HHHHHH", "HHHHHH", "HHHbHH", "HHbVbH", "HHHbHH", "HHHHHH" })
+                new BiomeMatrixGenerator(new String[] { "LLLLLLLL", "LLLLLLLL", "LLHHHHHH", "LLHHHHHH", "LLHHHBHH", "LLHHBVBH", "LLHHHBHH", "LLHHHHHH" })
                     .addBiomeEntry('H', highlands)
-                    .addBiomeEntry('b', border)
-                    .addBiomeEntry('V', volcanoes))
+                    .addBiomeEntry('B', border)
+                    .addBiomeEntry('V', volcanoes)
+                    .addBiomeEntry('L', lowlands))
             // Finish
             .name(new DimensionTH(2, "Testia", "terrainhorizons.dimension.testia"))
             .build();
@@ -118,11 +151,11 @@ public class Testia {
             .rainfall(0.99F)
             .topBlock(Blocks.grass)
             .fillerBlocks(height -> {
-                if (height <= 32) return anorthosite;
+                if (height <= -32) return anorthosite;
                 return andesite;
             })
             .terrain(terrainConfiguration)
-            .ocean(Blocks.water, Blocks.water, 80, Blocks.gravel, 4)
+            .ocean(Blocks.water, Blocks.water, 0, Blocks.gravel, 4)
             .surfaceThickness(4)
             .build();
     }
@@ -138,11 +171,11 @@ public class Testia {
             .topBlock(basalt.getBlock())
             .soilBlock(basalt.getBlock())
             .fillerBlocks(height -> {
-                if (height <= 32) return gabbro;
+                if (height <= -32) return gabbro;
                 return basalt;
             })
             .terrain(terrainConfiguration)
-            .ocean(Blocks.lava, basalt.getBlock(), 80, basalt.getBlock(), 1)
+            .ocean(Blocks.lava, basalt.getBlock(), 0, basalt.getBlock(), 1)
             .oceanCracks(0.3F, Blocks.air, 4)
             .surfaceThickness(4)
             .build();

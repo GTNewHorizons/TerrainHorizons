@@ -178,7 +178,7 @@ public final class TerrainConfiguration {
          * @return A builder with the feature added
          */
         public Builder endFeature() {
-            double finalHeight = (height > 0 ? height : 1) * scaleMultiplier;
+            double finalHeight = height * scaleMultiplier;
             double finalWidth = (width > 0 ? width : 1) * scaleMultiplier;
 
             TerrainFeature feature = new TerrainFeature(
