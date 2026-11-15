@@ -379,7 +379,7 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
                     int oceanHeight = palette.getOceanHeight();
 
                     // Handle ocean logic if necessary
-                    if (y <= oceanHeight) {
+                    if (y < oceanHeight) {
                         if (y == terrainHeight - 1) { // Handle seabed
                             if (y > palette.getSeabedHeight()) {
                                 block = palette.getOceanSurface();
@@ -404,10 +404,10 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
 
                             if (isCrack) {
                                 // The top layer should always be air and the lower blocks should be the crack blocks
-                                block = y == oceanHeight - 1 ? AIR : palette.getOceanCrackBlock();
+                                block = y == oceanHeight - 1 ? palette.getOceanCrackBlock() : palette.getOceanFiller();
                             } else {
                                 // Fill out ocean with surface and filler blocks
-                                if (y == oceanHeight) {
+                                if (y == oceanHeight - 1) {
                                     block = palette.getOceanSurface();
                                 } else {
                                     block = palette.getOceanFiller();

@@ -143,7 +143,7 @@ public class Testia {
             })
             .terrain(terrainConfiguration)
             .ocean(Blocks.lava, basalt.getBlock(), 80, basalt.getBlock(), 1)
-            .oceanCracks(0.3F, basalt.getBlock(), 4)
+            .oceanCracks(0.3F, Blocks.air, 4)
             .surfaceThickness(4)
             .build();
     }
