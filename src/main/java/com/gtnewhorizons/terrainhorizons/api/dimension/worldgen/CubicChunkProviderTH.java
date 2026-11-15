@@ -9,7 +9,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeBlockPalette;
-import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeGenSpace;
+import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeGenTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.DefaultBlockPalette;
 import com.gtnewhorizons.terrainhorizons.api.dimension.cave.CaveShape;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.details.Terrain3D;
@@ -305,13 +305,13 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
 
                 BiomeBlockPalette palette = DEFAULT_PALETTE;
 
-                // Check if the biome is a space biome and specify additional biome content
-                if (localBiome instanceof BiomeGenSpace spaceBiome) {
-                    palette = spaceBiome;
-                    Terrain3D biome3d = spaceBiome.getTerrain3d();
+                // Check if the biome is a terrain horizons biome and specify additional biome content
+                if (localBiome instanceof BiomeGenTH thBiome) {
+                    palette = thBiome;
+                    Terrain3D biome3d = thBiome.getTerrain3d();
 
-                    if (crustCaves == null || !crustCaves.equals(spaceBiome.getCaveShape())) {
-                        crustCaves = spaceBiome.getCaveShape();
+                    if (crustCaves == null || !crustCaves.equals(thBiome.getCaveShape())) {
+                        crustCaves = thBiome.getCaveShape();
                     }
                     if (terrain3d == null && biome3d != null || biome3d == null && terrain3d != null
                         || biome3d != null && !biome3d.equals(terrain3d)) {
@@ -363,7 +363,12 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
 
                     // Set block according to height
                     if (isTerrain && y >= terrainHeight + terrain3dHeight - palette.getSurfaceThickness()) {
-                        block = getSurfaceBlock(data, localX, localZ, y, palette);
+                        if (y >= terrainHeight + terrain3dHeight - 1) {
+                            block = getSurfaceBlock(data, localX, localZ, y, palette);
+                        } else {
+                            block = getSoilBlock(data, localX, localZ, y, palette);
+                        }
+
                     } else if (isTerrain) {
                         block = palette.getFillerBlocks()
                             .getStrataBlock(y);
@@ -458,6 +463,30 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
     }
 
     /**
+     * Picks the correct surface block
+     *
+     * @param data    Data of the current chunk
+     * @param localX  x coordinate within the chunk
+     * @param localZ  z coordinate within the chunk
+     * @param y       Absolute height coordinate
+     * @param palette Block palette of the dominant biome
+     * @return Surface block
+     */
+    private static ImmutableBlockMeta getSoilBlock(HeightOracle.ChunkData data, int localX, int localZ, int y,
+                                                      BiomeBlockPalette palette) {
+        ImmutableBlockMeta block;
+        ImmutableBlockMeta replacementBlock = data.surfaceBlocks[localX + (localZ << 4)];
+
+        if (replacementBlock != null) {
+            block = replacementBlock;
+        } else {
+            // Handle snow layer generation
+            block = y >= palette.getSnowHeight() ? palette.getSnowBlock() : palette.getSoilBlock();
+        }
+        return block;
+    }
+
+    /**
      * Efficiently places a block into the world
      *
      * @param ebs    Block storage for efficient placement
@@ -516,7 +545,7 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
         int surfaceMinY = (int) (data.heightMin / 16d);
         int surfaceMaxY = MathHelper.ceiling_double_int(data.heightMax / 16d);
 
-        BiomeGenSpace biome = data.biomes[0] instanceof BiomeGenSpace space ? space : null;
+        BiomeGenTH biome = data.biomes[0] instanceof BiomeGenTH space ? space : null;
 
         int cx = cube.getX();
         int cy = cube.getY();
@@ -549,8 +578,8 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
         }
     }
 
-    private void populateCubes(ICubeLoader loader, @Nullable BiomeGenSpace biome, Box cubesToPopulate,
-        int surfaceMaxY) {
+    private void populateCubes(ICubeLoader loader, @Nullable BiomeGenTH biome, Box cubesToPopulate,
+                               int surfaceMaxY) {
         for (var pos : cubesToPopulate) {
             if (pos.y() <= surfaceMaxY && biome != null) {
                 // Generate underground features

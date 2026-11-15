@@ -25,6 +25,7 @@ public class BiomeGenBuilder {
     // Setting basic fields for generation
     private final int id;
     private final ImmutableBlockMeta stone = new BlockMeta(Blocks.stone, 0);
+    private final ImmutableBlockMeta dirt = new BlockMeta(Blocks.dirt, 0);
 
     String name = "unset";
     Height height = new Height(0, 0);
@@ -41,6 +42,7 @@ public class BiomeGenBuilder {
     List<SurfaceFeature> surfaceFeatures = new ArrayList<>();
     List<UndergroundFeature> undergroundFeatures = new ArrayList<>();
     ImmutableBlockMeta topBlock = stone;
+    ImmutableBlockMeta soilBlock = dirt;
     int surfaceThickness = 1;
     boolean enableRain = false;
     ImmutableBlockMeta oceanCrackBlock;
@@ -118,6 +120,16 @@ public class BiomeGenBuilder {
      */
     public BiomeGenBuilder topBlock(Block block) {
         this.topBlock = new BlockMeta(block);
+        return this;
+    }
+
+    /**
+     * Sets the soil block of the biome (ground cover blocks right below the surface)
+     * @param block The required soil block
+     * @return Configured builder
+     */
+    public BiomeGenBuilder soilBlock(Block block) {
+        this.soilBlock = new BlockMeta(block);
         return this;
     }
 
@@ -276,7 +288,7 @@ public class BiomeGenBuilder {
      *
      * @return BiomeGenSpace configured from previous chained methods
      */
-    public BiomeGenSpace build() {
-        return new BiomeGenSpace(id, this);
+    public BiomeGenTH build() {
+        return new BiomeGenTH(id, this);
     }
 }

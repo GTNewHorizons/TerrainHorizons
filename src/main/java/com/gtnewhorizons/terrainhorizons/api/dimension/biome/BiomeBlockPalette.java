@@ -7,6 +7,8 @@ public interface BiomeBlockPalette {
 
     ImmutableBlockMeta getTopBlock();
 
+    ImmutableBlockMeta getSoilBlock();
+
     StratificationFunction getFillerBlocks();
 
     ImmutableBlockMeta getSnowBlock();

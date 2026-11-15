@@ -17,9 +17,10 @@ import lombok.Getter;
  * The class holding all generation fields for Biome generation
  */
 @Getter
-public class BiomeGenSpace extends BiomeGenBase implements BiomeBlockPalette {
+public class BiomeGenTH extends BiomeGenBase implements BiomeBlockPalette {
 
     private final ImmutableBlockMeta topBlock;
+    private final ImmutableBlockMeta soilBlock;
     private final TerrainConfiguration terrain;
     private final int snowHeight;
     private final ImmutableBlockMeta snowBlock;
@@ -44,7 +45,7 @@ public class BiomeGenSpace extends BiomeGenBase implements BiomeBlockPalette {
      * @param id The biome ID
      * @param b  The configured (hopefully) biome builder
      */
-    public BiomeGenSpace(int id, BiomeGenBuilder b) {
+    public BiomeGenTH(int id, BiomeGenBuilder b) {
         super(id);
 
         // Configure the class based on builder fields
@@ -55,6 +56,7 @@ public class BiomeGenSpace extends BiomeGenBase implements BiomeBlockPalette {
 
         this.fillerBlocks = b.fillerBlocks;
         this.topBlock = b.topBlock;
+        this.soilBlock = b.soilBlock;
         this.snowBlock = b.snowBlock;
         this.snowHeight = b.snowHeight;
         this.oceanHeight = b.oceanHeight;

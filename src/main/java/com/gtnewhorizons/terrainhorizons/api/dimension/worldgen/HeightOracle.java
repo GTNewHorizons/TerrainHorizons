@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionTH;
-import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeGenSpace;
+import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeGenTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.provider.WorldChunkManagerTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.ModifierHandler;
 import net.minecraft.init.Blocks;
@@ -107,7 +107,7 @@ public final class HeightOracle {
         int h = (int) data.heightmap[local];
         if (worldY < h) return false;
         BiomeGenBase b = data.biomes[local];
-        if (b instanceof BiomeGenSpace bgs) {
+        if (b instanceof BiomeGenTH bgs) {
             int oceanHeight = bgs.getOceanHeight();
             if (worldY <= oceanHeight) return false;
         }
@@ -127,18 +127,18 @@ public final class HeightOracle {
                 ImmutableBlockMeta surf = data.surfaceBlocks[local];
                 if (surf != null) return surf;
 
-                if (b instanceof BiomeGenSpace bgs) {
+                if (b instanceof BiomeGenTH bgs) {
                     return bgs.getTopBlock();
                 }
                 return STONE;
             }
-            if (b instanceof BiomeGenSpace bgs) {
+            if (b instanceof BiomeGenTH bgs) {
                 return bgs.getFillerBlocks()
                     .getStrataBlock(worldY);
             }
             return STONE;
         }
-        if (b instanceof BiomeGenSpace bgs) {
+        if (b instanceof BiomeGenTH bgs) {
             int oceanHeight = bgs.getOceanHeight();
             if (worldY <= oceanHeight) return bgs.getOceanFiller();
         }
@@ -223,7 +223,7 @@ public final class HeightOracle {
         for (int biomeIndex = 0; biomeIndex < biomeList.size(); biomeIndex++) {
             BiomeGenBase currentBiome = biomeList.get(biomeIndex);
 
-            if (!(currentBiome instanceof BiomeGenSpace spaceBiome)) {
+            if (!(currentBiome instanceof BiomeGenTH spaceBiome)) {
                 continue;
             }
 

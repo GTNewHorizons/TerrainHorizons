@@ -9,6 +9,7 @@ import com.gtnewhorizon.gtnhlib.util.data.ImmutableBlockMeta;
 public class DefaultBlockPalette implements BiomeBlockPalette {
 
     private final ImmutableBlockMeta topBlock = new BlockMeta(Blocks.grass);
+    private final ImmutableBlockMeta soilBlock = new BlockMeta(Blocks.dirt);
     private final StratificationFunction fillerBlocks = StratificationFunction.of(Blocks.stone);
     private final ImmutableBlockMeta snowBlock = new BlockMeta(Blocks.snow);
     private final ImmutableBlockMeta oceanFiller = new BlockMeta(Blocks.water);
@@ -19,6 +20,11 @@ public class DefaultBlockPalette implements BiomeBlockPalette {
     @Override
     public ImmutableBlockMeta getTopBlock() {
         return topBlock;
+    }
+
+    @Override
+    public ImmutableBlockMeta getSoilBlock() {
+        return soilBlock;
     }
 
     @Override

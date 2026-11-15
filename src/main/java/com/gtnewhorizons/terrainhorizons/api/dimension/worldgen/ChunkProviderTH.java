@@ -6,7 +6,7 @@ import java.util.Random;
 
 import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeBlockPalette;
-import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeGenSpace;
+import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeGenTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.DefaultBlockPalette;
 import com.gtnewhorizons.terrainhorizons.api.dimension.cave.CaveShape;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.feature.SurfaceFeature;
@@ -175,7 +175,7 @@ public class ChunkProviderTH implements IChunkProvider, THPlanetGenerator {
 
                 BiomeBlockPalette palette = DEFAULT_PALETTE;
 
-                if (localBiome instanceof BiomeGenSpace spaceBiome) {
+                if (localBiome instanceof BiomeGenTH spaceBiome) {
                     palette = spaceBiome;
 
                     if (caveShape == null || !caveShape.equals(spaceBiome.getCaveShape())) {
@@ -357,7 +357,7 @@ public class ChunkProviderTH implements IChunkProvider, THPlanetGenerator {
         // Get local biome
         BiomeGenBase localBiome = worldObj.getWorldChunkManager()
             .getBiomeGenAt(x, z);
-        if (localBiome instanceof BiomeGenSpace spaceBiome) {
+        if (localBiome instanceof BiomeGenTH spaceBiome) {
             int surfaceY = (heightOracle.getColumnHeight(x, z) + 15) >> 4;
 
             // Generate surface features in locally random points within the chunk

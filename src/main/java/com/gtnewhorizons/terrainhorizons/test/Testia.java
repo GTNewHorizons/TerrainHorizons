@@ -136,6 +136,7 @@ public class Testia {
             .temperature(0.4F)
             .rainfall(0.99F)
             .topBlock(basalt.getBlock())
+            .soilBlock(basalt.getBlock())
             .fillerBlocks(height -> {
                 if (height <= 32) return gabbro;
                 return basalt;
