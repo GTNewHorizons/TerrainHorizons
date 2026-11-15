@@ -8,7 +8,6 @@ import com.gtnewhorizons.terrainhorizons.api.dimension.provider.WorldProviderBui
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.BiomeMatrixGenerator;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.TerrainConfiguration;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.TerrainPreset;
-import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.mantle.MantleRules;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.modifier.TerrainModifier;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -22,8 +21,8 @@ public class Testia {
      * @param builder The world provider builder being configured
      */
     public static void configureWorldProvider(WorldProviderBuilder builder) {
-        BiomeGenBase border = createOceanBiome(
-            "Moon Ocean Edge",
+        BiomeGenBase border = createLavaOceanBiome(
+            "Testia Lava Ocean Edge",
             TerrainConfiguration.builder()
                 .feature(TerrainPreset.BASE_HEIGHT)
                 .height(16)
@@ -33,8 +32,8 @@ public class Testia {
                 .height(32)
                 .endFeature()
                 .build());
-        BiomeGenBase volcanoes = createOceanBiome(
-            "Moon Volcanoes",
+        BiomeGenBase volcanoes = createLavaOceanBiome(
+            "Testia Volcanoes",
             TerrainConfiguration.builder()
                 .feature(TerrainPreset.BASE_HEIGHT)
                 .height(8)
@@ -59,7 +58,7 @@ public class Testia {
                 .endFeature()
                 .build());
         BiomeGenBase highlands = createLandBiome(
-            "Moon Highlands",
+            "Testia Highlands",
             TerrainConfiguration.builder()
                 .feature(TerrainPreset.BASE_HEIGHT)
                 .height(32)
@@ -110,27 +109,27 @@ public class Testia {
      * @return The BiomeGenBase used to generated biomes of that type
      */
     protected static BiomeGenBase createLandBiome(String name, TerrainConfiguration terrainConfiguration) {
-        BlockMeta andesite = new BlockMeta(Blocks.brick_block);
-        BlockMeta anorthosite = new BlockMeta(Blocks.coal_block);
+        BlockMeta andesite = new BlockMeta(Blocks.stone);
+        BlockMeta anorthosite = new BlockMeta(Blocks.iron_ore);
 
         return new BiomeGenBuilder(BiomeIdOffsetter.getBiomeId()).name(name)
             .height(0.1F, 0.11F)
             .temperature(0.4F)
             .rainfall(0.99F)
-            .topBlock(Blocks.stone)
+            .topBlock(Blocks.grass)
             .fillerBlocks(height -> {
                 if (height <= 32) return anorthosite;
                 return andesite;
             })
             .terrain(terrainConfiguration)
-            .ocean(Blocks.obsidian, Blocks.bookshelf, 1, Blocks.obsidian, 1)
+            .ocean(Blocks.water, Blocks.water, 80, Blocks.gravel, 4)
             .surfaceThickness(4)
             .build();
     }
 
-    protected static BiomeGenBase createOceanBiome(String name, TerrainConfiguration terrainConfiguration) {
-        BlockMeta basalt = new BlockMeta(Blocks.bookshelf);
-        BlockMeta gabbro = new BlockMeta(Blocks.hay_block);
+    protected static BiomeGenBase createLavaOceanBiome(String name, TerrainConfiguration terrainConfiguration) {
+        BlockMeta basalt = new BlockMeta(Blocks.obsidian);
+        BlockMeta gabbro = new BlockMeta(Blocks.stone);
 
         return new BiomeGenBuilder(BiomeIdOffsetter.getBiomeId()).name(name)
             .height(0.1F, 0.11F)
@@ -142,8 +141,8 @@ public class Testia {
                 return basalt;
             })
             .terrain(terrainConfiguration)
-            .ocean(Blocks.obsidian, Blocks.bookshelf, 80, Blocks.obsidian, 1)
-            .oceanCracks(0.3F, Blocks.lava, 4)
+            .ocean(Blocks.lava, basalt.getBlock(), 80, basalt.getBlock(), 1)
+            .oceanCracks(0.3F, basalt.getBlock(), 4)
             .surfaceThickness(4)
             .build();
     }
