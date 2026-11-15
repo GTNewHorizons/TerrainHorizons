@@ -1,5 +1,6 @@
 package com.gtnewhorizons.terrainhorizons;
 
+import com.gtnewhorizons.terrainhorizons.test.DimensionRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -11,6 +12,10 @@ public class CommonProxy {
     // GameRegistry." (Remove if not needed)
     public void preInit(FMLPreInitializationEvent event) {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
+        NetworkManager.registerPackets();
+        DimensionRegistry.registerDimensions();
+
+        TerrainHorizonsItems.registerAll();
 
         TerrainHorizons.LOG.info(Config.greeting);
         TerrainHorizons.LOG.info("I am TerrainHorizons at version " + Tags.VERSION);

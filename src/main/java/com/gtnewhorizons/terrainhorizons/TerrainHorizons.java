@@ -1,5 +1,7 @@
 package com.gtnewhorizons.terrainhorizons;
 
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,6 +17,7 @@ public class TerrainHorizons {
 
     public static final String MODID = "terrainhorizons";
     public static final Logger LOG = LogManager.getLogger(MODID);
+    public static final SimpleNetworkWrapper TERRAIN_HORIZONS_NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
 
     @SidedProxy(clientSide = "com.gtnewhorizons.terrainhorizons.ClientProxy", serverSide = "com.gtnewhorizons.terrainhorizons.CommonProxy")
     public static CommonProxy proxy;
