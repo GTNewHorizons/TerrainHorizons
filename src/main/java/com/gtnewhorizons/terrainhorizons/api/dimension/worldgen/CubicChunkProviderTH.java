@@ -458,8 +458,7 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
         if (replacementBlock != null) {
             block = replacementBlock;
         } else {
-            // Handle snow layer generation
-            block = y >= palette.getSnowHeight() ? palette.getSnowBlock() : palette.getTopBlock();
+            block = palette.getTopBlocks().getStrataBlock(y);
         }
         return block;
     }
@@ -482,8 +481,7 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
         if (replacementBlock != null) {
             block = replacementBlock;
         } else {
-            // Handle snow layer generation
-            block = y >= palette.getSnowHeight() ? palette.getSnowBlock() : palette.getSoilBlock();
+            block = palette.getSoilBlocks().getStrataBlock(y);
         }
         return block;
     }

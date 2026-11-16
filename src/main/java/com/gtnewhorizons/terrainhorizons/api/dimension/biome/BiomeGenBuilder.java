@@ -25,24 +25,21 @@ public class BiomeGenBuilder {
     // Setting basic fields for generation
     private final int id;
     private final ImmutableBlockMeta stone = new BlockMeta(Blocks.stone, 0);
-    private final ImmutableBlockMeta dirt = new BlockMeta(Blocks.dirt, 0);
 
     String name = "unset";
     Height height = new Height(0, 0);
     float temperature = 0.4F;
     float rainfall = 0.0F;
     TerrainConfiguration terrain;
-    int snowHeight = 512;
     int oceanHeight = 0;
     int seabedHeight = 0;
     ImmutableBlockMeta oceanFiller = stone;
     ImmutableBlockMeta oceanSurface = stone;
     ImmutableBlockMeta seabed = stone;
-    ImmutableBlockMeta snowBlock = stone;
     List<SurfaceFeature> surfaceFeatures = new ArrayList<>();
     List<UndergroundFeature> undergroundFeatures = new ArrayList<>();
-    ImmutableBlockMeta topBlock = stone;
-    ImmutableBlockMeta soilBlock = dirt;
+    StratificationFunction topBlocks;
+    StratificationFunction soilBlocks;
     int surfaceThickness = 1;
     boolean enableRain = false;
     ImmutableBlockMeta oceanCrackBlock;
@@ -115,39 +112,26 @@ public class BiomeGenBuilder {
     /**
      * Set the top block of the biome (Where the block has meta-data)
      *
-     * @param block The required top block (with meta)
+     * @param topBlocks The required top block (with meta)
      * @return Configured builder
      */
-    public BiomeGenBuilder topBlock(Block block) {
-        this.topBlock = new BlockMeta(block);
+    public BiomeGenBuilder topBlock(StratificationFunction topBlocks) {
+        this.topBlocks = topBlocks;
         return this;
     }
 
     /**
      * Sets the soil block of the biome (ground cover blocks right below the surface)
-     * @param block The required soil block
+     * @param soilBlocks The required soil block
      * @return Configured builder
      */
-    public BiomeGenBuilder soilBlock(Block block) {
-        this.soilBlock = new BlockMeta(block);
+    public BiomeGenBuilder soilBlock(StratificationFunction soilBlocks) {
+        this.soilBlocks = soilBlocks;
         return this;
     }
 
     public BiomeGenBuilder fillerBlocks(StratificationFunction fillerBlocks) {
         this.fillerBlocks = fillerBlocks;
-        return this;
-    }
-
-    /**
-     * Sets the snow block for the biome
-     *
-     * @param blockMeta  The block to be used for snow (with meta)
-     * @param snowHeight The height of the snow to generate
-     * @return Configured builder
-     */
-    public BiomeGenBuilder snowBlock(Block blockMeta, int snowHeight) {
-        this.snowBlock = new BlockMeta(blockMeta);
-        this.snowHeight = snowHeight;
         return this;
     }
 

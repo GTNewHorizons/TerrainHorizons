@@ -19,11 +19,9 @@ import lombok.Getter;
 @Getter
 public class BiomeGenTH extends BiomeGenBase implements BiomeBlockPalette {
 
-    private final ImmutableBlockMeta topBlock;
-    private final ImmutableBlockMeta soilBlock;
+    private final StratificationFunction topBlocks;
+    private final StratificationFunction soilBlocks;
     private final TerrainConfiguration terrain;
-    private final int snowHeight;
-    private final ImmutableBlockMeta snowBlock;
     private final int oceanHeight;
     private final int seabedHeight;
     private final ImmutableBlockMeta oceanFiller;
@@ -55,10 +53,8 @@ public class BiomeGenTH extends BiomeGenBase implements BiomeBlockPalette {
         this.enableRain = b.enableRain;
 
         this.fillerBlocks = b.fillerBlocks;
-        this.topBlock = b.topBlock;
-        this.soilBlock = b.soilBlock;
-        this.snowBlock = b.snowBlock;
-        this.snowHeight = b.snowHeight;
+        this.topBlocks = b.topBlocks;
+        this.soilBlocks = b.soilBlocks;
         this.oceanHeight = b.oceanHeight;
         this.seabedHeight = b.seabedHeight;
         this.oceanFiller = b.oceanFiller;

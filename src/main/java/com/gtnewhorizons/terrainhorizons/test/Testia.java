@@ -144,12 +144,31 @@ public class Testia {
     protected static BiomeGenBase createLandBiome(String name, TerrainConfiguration terrainConfiguration) {
         BlockMeta andesite = new BlockMeta(Blocks.stone);
         BlockMeta anorthosite = new BlockMeta(Blocks.iron_ore);
+        BlockMeta grass = new BlockMeta(Blocks.grass);
+        BlockMeta snow = new BlockMeta(Blocks.snow);
+        BlockMeta dirt = new BlockMeta(Blocks.dirt);
+        BlockMeta ice = new BlockMeta(Blocks.ice);
 
         return new BiomeGenBuilder(BiomeIdOffsetter.getBiomeId()).name(name)
             .height(0.1F, 0.11F)
             .temperature(0.4F)
             .rainfall(0.99F)
-            .topBlock(Blocks.grass)
+            .topBlock(height -> {
+                if (height < 64) {
+                    return grass;
+                } else if (height < 128) {
+                    return snow;
+                }
+                return ice;
+            })
+            .soilBlock(height -> {
+                if (height < 64) {
+                    return dirt;
+                } else if (height < 128) {
+                    return snow;
+                }
+                return ice;
+            })
             .fillerBlocks(height -> {
                 if (height <= -32) return anorthosite;
                 return andesite;
@@ -168,8 +187,8 @@ public class Testia {
             .height(0.1F, 0.11F)
             .temperature(0.4F)
             .rainfall(0.99F)
-            .topBlock(basalt.getBlock())
-            .soilBlock(basalt.getBlock())
+            .topBlock(_ -> basalt)
+            .soilBlock(_ -> basalt)
             .fillerBlocks(height -> {
                 if (height <= -32) return gabbro;
                 return basalt;

@@ -5,13 +5,11 @@ import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.StratificationFu
 
 public interface BiomeBlockPalette {
 
-    ImmutableBlockMeta getTopBlock();
+    StratificationFunction getTopBlocks();
 
-    ImmutableBlockMeta getSoilBlock();
+    StratificationFunction getSoilBlocks();
 
     StratificationFunction getFillerBlocks();
-
-    ImmutableBlockMeta getSnowBlock();
 
     ImmutableBlockMeta getOceanFiller();
 
@@ -24,8 +22,6 @@ public interface BiomeBlockPalette {
     default boolean hasCracks() {
         return getOceanCrackBlock() != null && getOceanCrackThickness() > 0;
     }
-
-    int getSnowHeight();
 
     int getOceanHeight();
 

@@ -215,11 +215,10 @@ public class ChunkProviderTH implements IChunkProvider, THPlanetGenerator {
                         if (replacementBlock != null) {
                             block = replacementBlock;
                         } else {
-                            block = y >= palette.getSnowHeight() ? palette.getSnowBlock() : palette.getTopBlock();
+                            block = palette.getTopBlocks().getStrataBlock(y);
                         }
                     } else {
-                        block = palette.getFillerBlocks()
-                            .getStrataBlock(y);
+                        block = palette.getFillerBlocks().getStrataBlock(y);
                     }
 
                     long oceanTimeStart = 0;

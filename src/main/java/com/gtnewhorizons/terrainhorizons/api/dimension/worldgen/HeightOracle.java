@@ -128,7 +128,7 @@ public final class HeightOracle {
                 if (surf != null) return surf;
 
                 if (b instanceof BiomeGenTH bgs) {
-                    return bgs.getTopBlock();
+                    return bgs.getTopBlocks().getStrataBlock(worldY);
                 }
                 return STONE;
             }
