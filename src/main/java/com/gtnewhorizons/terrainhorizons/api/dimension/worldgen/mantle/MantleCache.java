@@ -73,8 +73,7 @@ public class MantleCache {
             floor,
             world,
             random,
-            dimension,
-            terrainNoise,
+                terrainNoise,
             modifierHandler);
         cacheEntries.add(correctEntry);
         while (cacheEntries.size() > CACHE_LIMIT) {
@@ -104,12 +103,11 @@ public class MantleCache {
          * @param floor           Terrain configuration for the floor
          * @param world           World in which the mantle generates
          * @param random          Randomizer for terrain generation
-         * @param dimension       Dimension the cache is used for
          * @param terrainNoise    Noise for generating the terrain
          * @param modifierHandler Handler for terrain modifiers
          */
         public CacheEntry(int columnX, int columnZ, TerrainConfiguration ceiling, TerrainConfiguration floor,
-                          World world, Random random, DimensionTH dimension, NoiseGeneratorOctaves terrainNoise,
+                          World world, Random random, NoiseGeneratorOctaves terrainNoise,
                           ModifierHandler modifierHandler) {
             this.columnX = columnX;
             this.columnZ = columnZ;
@@ -128,8 +126,7 @@ public class MantleCache {
                     columnZ,
                     withSeed(columnX, columnZ, i++),
                     DEFAULT_RELEVANCE,
-                    dimension,
-                    terrainNoise,
+                        terrainNoise,
                     modifierHandler);
             }
             i = 0;
@@ -142,8 +139,7 @@ public class MantleCache {
                     columnZ,
                     withSeed(columnX, columnZ, i++),
                     DEFAULT_RELEVANCE,
-                    dimension,
-                    terrainNoise,
+                        terrainNoise,
                     modifierHandler);
             }
             i = 0;
@@ -158,8 +154,7 @@ public class MantleCache {
                     columnZ,
                     withSeed(columnX, columnZ, i++),
                     DEFAULT_RELEVANCE,
-                    dimension,
-                    terrainNoise,
+                        terrainNoise,
                     modifierHandler);
             }
             i = 0;
@@ -172,8 +167,7 @@ public class MantleCache {
                     columnZ,
                     withSeed(columnX, columnZ, i++),
                     DEFAULT_RELEVANCE,
-                    dimension,
-                    terrainNoise,
+                        terrainNoise,
                     modifierHandler);
             }
             exportData = new MantleCacheData(

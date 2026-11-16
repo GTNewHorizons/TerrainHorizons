@@ -5,6 +5,7 @@ import com.gtnewhorizons.terrainhorizons.api.dimension.DimensionTH;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeGenBuilder;
 import com.gtnewhorizons.terrainhorizons.api.dimension.biome.BiomeIdOffsetter;
 import com.gtnewhorizons.terrainhorizons.api.dimension.provider.WorldProviderBuilder;
+import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.BasicTerrain;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.BiomeMatrixGenerator;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.TerrainConfiguration;
 import com.gtnewhorizons.terrainhorizons.api.dimension.worldgen.TerrainPreset;
@@ -24,7 +25,7 @@ public class Testia {
         BiomeGenBase border = createLavaOceanBiome(
             "Testia Lava Ocean Edge",
             TerrainConfiguration.builder()
-                .feature(TerrainPreset.MOUNTAIN_RANGES)
+                .feature(BasicTerrain.MOUNTAIN_RANGES)
                 .width(4)
                 .height(32)
                 .endFeature()
@@ -32,10 +33,10 @@ public class Testia {
         BiomeGenBase volcanoes = createLavaOceanBiome(
             "Testia Volcanoes",
             TerrainConfiguration.builder()
-                .feature(TerrainPreset.BASE_HEIGHT)
+                .feature(BasicTerrain.BASE_HEIGHT)
                 .height(-32)
                 .endFeature()
-                .feature(TerrainPreset.SHIELD_VOLCANOES)
+                .feature(BasicTerrain.SHIELD_VOLCANOES)
                 .replacementBlock(Blocks.lava)
                 .width(2)
                 .height(48)
@@ -44,7 +45,7 @@ public class Testia {
                     TerrainModifier.WEIRDNESS.minimum,
                     TerrainModifier.WEIRDNESS.middle)
                 .endFeature()
-                .feature(TerrainPreset.SHIELD_VOLCANOES)
+                .feature(BasicTerrain.SHIELD_VOLCANOES)
                 .replacementBlock(Blocks.lava)
                 .width(4)
                 .height(64)
@@ -57,10 +58,10 @@ public class Testia {
         BiomeGenBase highlands = createLandBiome(
             "Testia Highlands",
             TerrainConfiguration.builder()
-                .feature(TerrainPreset.BASE_HEIGHT)
+                .feature(BasicTerrain.BASE_HEIGHT)
                 .height(8)
                 .endFeature()
-                .feature(TerrainPreset.MOUNTAIN_RANGES)
+                .feature(BasicTerrain.MOUNTAIN_RANGES)
                 .width(3)
                 .height(24)
                 .modifier(
@@ -68,7 +69,7 @@ public class Testia {
                     TerrainModifier.WEIRDNESS.lowerExtreme,
                     TerrainModifier.WEIRDNESS.upperExtreme)
                 .endFeature()
-                .feature(TerrainPreset.MOUNTAIN_RANGES)
+                .feature(BasicTerrain.MOUNTAIN_RANGES)
                 .width(32)
                 .height(192)
                 .modifier(
@@ -76,26 +77,34 @@ public class Testia {
                     TerrainModifier.WEIRDNESS.minimum,
                     TerrainModifier.WEIRDNESS.middle)
                 .endFeature()
-                .feature(TerrainPreset.CANYONS)
+                .feature(BasicTerrain.CANYONS)
                 .width(4)
-                .height(32)
+                .height(16)
                 .modifier(
                     TerrainModifier.WEIRDNESS,
                     TerrainModifier.WEIRDNESS.middle,
+                    TerrainModifier.WEIRDNESS.maximum)
+                .endFeature()
+                .feature(BasicTerrain.CANYONS)
+                .width(32)
+                .height(32)
+                .modifier(
+                    TerrainModifier.WEIRDNESS,
+                    TerrainModifier.WEIRDNESS.upperMiddle,
                     TerrainModifier.WEIRDNESS.maximum)
                 .endFeature()
                 .build());
         BiomeGenBase lowlands = createLandBiome(
             "Testia Lowlands",
             TerrainConfiguration.builder()
-                .feature(TerrainPreset.BASE_HEIGHT)
+                .feature(BasicTerrain.BASE_HEIGHT)
                 .height(-40)
                 .modifier(
                     TerrainModifier.WEIRDNESS,
                     TerrainModifier.WEIRDNESS.lowerExtreme,
                     TerrainModifier.WEIRDNESS.upperExtreme)
                 .endFeature()
-                .feature(TerrainPreset.MOUNTAIN_RANGES)
+                .feature(BasicTerrain.MOUNTAIN_RANGES)
                 .width(3)
                 .height(40)
                 .modifier(
@@ -103,7 +112,7 @@ public class Testia {
                     TerrainModifier.WEIRDNESS.lowerExtreme,
                     TerrainModifier.WEIRDNESS.upperExtreme)
                 .endFeature()
-                .feature(TerrainPreset.MOUNTAIN_RANGES)
+                .feature(BasicTerrain.MOUNTAIN_RANGES)
                 .width(32)
                 .height(32)
                 .modifier(
@@ -111,7 +120,7 @@ public class Testia {
                     TerrainModifier.WEIRDNESS.minimum,
                     TerrainModifier.WEIRDNESS.middle)
                 .endFeature()
-                .feature(TerrainPreset.CANYONS)
+                .feature(BasicTerrain.CANYONS)
                 .width(4)
                 .height(16)
                 .modifier(

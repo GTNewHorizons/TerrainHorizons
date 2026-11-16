@@ -241,7 +241,6 @@ public final class HeightOracle {
                     cz,
                     withSeed(cx, cz, i++, 5),
                     terrainRelevance,
-                    dimension,
                     terrainNoise,
                     modifierHandler);
             }
@@ -257,7 +256,6 @@ public final class HeightOracle {
                     cz,
                     withSeed(cx, cz, i++, 10),
                     terrainRelevance,
-                    dimension,
                     terrainNoise,
                     modifierHandler);
             }
