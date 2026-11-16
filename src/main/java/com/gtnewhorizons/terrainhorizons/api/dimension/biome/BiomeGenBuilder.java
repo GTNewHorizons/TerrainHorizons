@@ -32,10 +32,8 @@ public class BiomeGenBuilder {
     float rainfall = 0.0F;
     TerrainConfiguration terrain;
     int oceanHeight = 0;
-    int seabedHeight = 0;
     ImmutableBlockMeta oceanFiller = stone;
     ImmutableBlockMeta oceanSurface = stone;
-    ImmutableBlockMeta seabed = stone;
     List<SurfaceFeature> surfaceFeatures = new ArrayList<>();
     List<UndergroundFeature> undergroundFeatures = new ArrayList<>();
     StratificationFunction topBlocks;
@@ -136,22 +134,17 @@ public class BiomeGenBuilder {
     }
 
     /**
-     * Sets the ocean for the bioome
+     * Sets the ocean for the biome
      *
      * @param oceanFiller  The filler block for the ocean to use (with meta)
      * @param oceanSurface The surface block of the ocean (water, ice layer etc.) [with meta]
      * @param oceanHeight  The height of the ocean (sea-level)
-     * @param seabed       The block to use for the seabed (with meta)
-     * @param seabedHeight The height of the seabed
      * @return Configured builder
      */
-    public BiomeGenBuilder ocean(Block oceanFiller, Block oceanSurface, int oceanHeight, Block seabed,
-        int seabedHeight) {
+    public BiomeGenBuilder ocean(Block oceanFiller, Block oceanSurface, int oceanHeight) {
         this.oceanFiller = new BlockMeta(oceanFiller);
         this.oceanSurface = new BlockMeta(oceanSurface);
         this.oceanHeight = oceanHeight;
-        this.seabed = new BlockMeta(seabed);
-        this.seabedHeight = seabedHeight;
         return this;
     }
 

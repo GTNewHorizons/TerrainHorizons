@@ -15,8 +15,6 @@ public interface BiomeBlockPalette {
 
     ImmutableBlockMeta getOceanSurface();
 
-    ImmutableBlockMeta getSeabed();
-
     ImmutableBlockMeta getOceanCrackBlock();
 
     default boolean hasCracks() {
@@ -24,8 +22,6 @@ public interface BiomeBlockPalette {
     }
 
     int getOceanHeight();
-
-    int getSeabedHeight();
 
     int getSurfaceThickness();
 

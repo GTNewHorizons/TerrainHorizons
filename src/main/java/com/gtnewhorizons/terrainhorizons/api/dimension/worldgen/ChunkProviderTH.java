@@ -228,12 +228,8 @@ public class ChunkProviderTH implements IChunkProvider, THPlanetGenerator {
 
                     if (y <= oceanHeight) {
                         if (y == terrainHeight - 1) {
-                            if (y > palette.getSeabedHeight()) {
-                                block = palette.getOceanSurface();
-                                isTerrain = false;
-                            } else {
-                                block = palette.getSeabed();
-                            }
+                            block = palette.getOceanSurface();
+                            isTerrain = false;
                         } else if (y > terrainHeight - 1) {
                             isTerrain = false;
 

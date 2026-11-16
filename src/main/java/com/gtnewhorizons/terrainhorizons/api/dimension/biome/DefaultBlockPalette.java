@@ -43,22 +43,12 @@ public class DefaultBlockPalette implements BiomeBlockPalette {
     }
 
     @Override
-    public ImmutableBlockMeta getSeabed() {
-        return seabed;
-    }
-
-    @Override
     public ImmutableBlockMeta getOceanCrackBlock() {
         return oceanCrackBlock;
     }
 
     @Override
     public int getOceanHeight() {
-        return 0;
-    }
-
-    @Override
-    public int getSeabedHeight() {
         return 0;
     }
 

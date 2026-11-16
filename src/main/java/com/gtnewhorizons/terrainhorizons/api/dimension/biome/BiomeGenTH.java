@@ -23,10 +23,8 @@ public class BiomeGenTH extends BiomeGenBase implements BiomeBlockPalette {
     private final StratificationFunction soilBlocks;
     private final TerrainConfiguration terrain;
     private final int oceanHeight;
-    private final int seabedHeight;
     private final ImmutableBlockMeta oceanFiller;
     private final ImmutableBlockMeta oceanSurface;
-    private final ImmutableBlockMeta seabed;
     private final List<SurfaceFeature> surfaceFeatures;
     private final List<UndergroundFeature> undergroundFeatures;
     private final int surfaceThickness;
@@ -56,10 +54,8 @@ public class BiomeGenTH extends BiomeGenBase implements BiomeBlockPalette {
         this.topBlocks = b.topBlocks;
         this.soilBlocks = b.soilBlocks;
         this.oceanHeight = b.oceanHeight;
-        this.seabedHeight = b.seabedHeight;
         this.oceanFiller = b.oceanFiller;
         this.oceanSurface = b.oceanSurface;
-        this.seabed = b.seabed;
         this.caveShape = b.caveShape;
         this.terrain3d = b.terrain3d;
 

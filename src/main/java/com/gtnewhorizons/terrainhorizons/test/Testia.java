@@ -148,13 +148,20 @@ public class Testia {
         BlockMeta snow = new BlockMeta(Blocks.snow);
         BlockMeta dirt = new BlockMeta(Blocks.dirt);
         BlockMeta ice = new BlockMeta(Blocks.ice);
+        BlockMeta gravel = new BlockMeta(Blocks.gravel);
+        BlockMeta sand = new BlockMeta(Blocks.sand);
+        BlockMeta sandstone = new BlockMeta(Blocks.sandstone);
 
         return new BiomeGenBuilder(BiomeIdOffsetter.getBiomeId()).name(name)
             .height(0.1F, 0.11F)
             .temperature(0.4F)
             .rainfall(0.99F)
             .topBlock(height -> {
-                if (height < 64) {
+                if (height < 0) {
+                    return gravel;
+                } else if (height < 4) {
+                    return sand;
+                } else if (height < 64) {
                     return grass;
                 } else if (height < 128) {
                     return snow;
@@ -162,7 +169,11 @@ public class Testia {
                 return ice;
             })
             .soilBlock(height -> {
-                if (height < 64) {
+                if (height < 0) {
+                    return gravel;
+                } else if (height < 4) {
+                    return sandstone;
+                } else if (height < 64) {
                     return dirt;
                 } else if (height < 128) {
                     return snow;
@@ -174,7 +185,7 @@ public class Testia {
                 return andesite;
             })
             .terrain(terrainConfiguration)
-            .ocean(Blocks.water, Blocks.water, 0, Blocks.gravel, 4)
+            .ocean(Blocks.water, Blocks.water, 0)
             .surfaceThickness(4)
             .build();
     }
@@ -194,7 +205,7 @@ public class Testia {
                 return basalt;
             })
             .terrain(terrainConfiguration)
-            .ocean(Blocks.lava, basalt.getBlock(), 0, basalt.getBlock(), 1)
+            .ocean(Blocks.lava, basalt.getBlock(), 0)
             .oceanCracks(0.3F, Blocks.air, 4)
             .surfaceThickness(4)
             .build();

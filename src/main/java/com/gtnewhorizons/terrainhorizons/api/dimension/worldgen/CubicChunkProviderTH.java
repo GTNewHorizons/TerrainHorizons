@@ -382,13 +382,9 @@ public class CubicChunkProviderTH implements IWorldGenerator, THPlanetGenerator 
 
                     // Handle ocean logic if necessary
                     if (y < oceanHeight) {
-                        if (y == terrainHeight - 1) { // Handle seabed
-                            if (y > palette.getSeabedHeight()) {
-                                block = palette.getOceanSurface();
-                                isTerrain = false;
-                            } else {
-                                block = palette.getSeabed();
-                            }
+                        if (y == terrainHeight - 1) { // Handle surface of the ocean
+                            block = palette.getOceanSurface();
+                            isTerrain = false;
                         } else if (y > terrainHeight - 1) { // Handle ocean itself
                             isTerrain = false;
 
